@@ -1,1 +1,111 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+@font-face {
+  font-family: "DaxPro-Regular";
+  src: url(assets/fonts/DaxPro-Regular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal
+}
+
+@font-face {
+  font-family: "DaxPro-Medium";
+  src: url(assets/fonts/DaxPro-Medium.woff) format("woff");
+  font-weight: normal;
+  font-style: normal
+}
+
+@font-face {
+  font-family: "DaxWebPro-Regular";
+  src: url(assets/fonts/DaxWebPro.woff) format("woff");
+  font-weight: normal;
+  font-style: normal
+}
+
+@font-face {
+  font-family: "DaxWebPro-Medium";
+  src: url(assets/fonts/DaxWebPro-Medi.woff) format("woff");
+  font-weight: normal;
+  font-style: normal
+}
+
+$europe-assistance-primary-palette: (
+  50: #e4f2fd,
+  100: #bcdffb,
+  200: #93ccf9,
+  300: #69b8f6,
+  400: #49a8f5,
+  500: #2d9af3,
+  600: #298ce5,
+  700: #237ad2,
+  800: #1e69c0,
+  900: #154BA1,
+  A100: #ec4d51,
+  A200: #EF383D,
+  A400: #c31e29,
+  A700: #b40f1d,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+  )
+);
+
+$my-primary: mat.define-palette($europe-assistance-primary-palette, 900);
+$my-accent: mat.define-palette($europe-assistance-primary-palette, A200, A100, A400);
+
+$my-custom-typography: mat.define-typography-config(
+  $font-family: "DaxPro-Regular",
+  $headline-1: mat.define-typography-level(25.6px, 25.6px, 700),
+  $headline-2: mat.define-typography-level(
+    $font-family: "DaxPro-Regular",
+    $font-weight: 700,
+    $font-size: 19.2px,
+    $line-height: 19.2px,
+    $letter-spacing: normal),
+  $headline-3: mat.define-typography-level(11.648px, 11.648px, 700),
+  $headline-4: null,
+  $headline-5: null,
+  $headline-6: null,
+  $subtitle-1: null,
+  $subtitle-2: null,
+  $body-1: mat.define-typography-level(12.8px, 12.8px, 700, "Arial"),
+  $body-2: null,
+  $caption: null,
+  $button: null,
+  $overline: null,
+);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+  ),
+  typography: $my-custom-typography,
+  density: 0,
+));
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($my-theme);
+
+@include mat.button-theme($my-theme);
+@include mat.card-theme($my-theme);
+@include mat.toolbar-theme($my-theme);
+@include mat.progress-spinner-theme($my-theme);
+
+$mat-toolbar-container-background-color: white;
+$mat-toolbar-container-text-color: #0A4895;
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "DaxPro-Regular", "Helvetica Neue", sans-serif; }
+
+@media (max-width: 599px) {
+  mat-card.customCard {
+    height: 90%;
+    width: 90%;
+  }
+}
