@@ -39,8 +39,8 @@ export class WebRTCService implements OnDestroy {
     // Setup UA configuration params
     const config: UAConfiguration = {
       sockets     : environment.addresses.map((addr: string) => new WebSocketInterface(addr)),
-      uri         : `sip:Anonymous@${environment.domain}`,
-      display_name : 'Anonymous',
+      uri         : `sip:123456789@${environment.domain}`,
+      display_name : '123456789',
       register    : false,
       extra_headers: [`link-id: ${linkId}`]
     };
